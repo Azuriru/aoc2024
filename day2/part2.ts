@@ -31,6 +31,8 @@ function getReportStatus(report: number[]) {
 }
 
 function getAllReportStatus(report: number[]) {
+    if (getReportStatus(report)) return true;
+
     // I was going to check by value, but I really
     // would be fucked if there were duplicate values
     const possibilities = report.map((_, index, report) => {
