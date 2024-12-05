@@ -30,16 +30,6 @@ function getReportStatus(report: number[]) {
     return true;
 }
 
-function getAllReportStatus(report: number[]) {
-    // I was going to check by value, but I really
-    // would be fucked if there were duplicate values
-    const possibilities = report.map((_, index, report) => {
-        return report.filter((_, currentIndex) => currentIndex !== index);
-    });
-
-    return possibilities.some(getReportStatus);
-}
-
 const reports = input
     .split('\n')
     .map((report) => {
@@ -47,7 +37,7 @@ const reports = input
             .split(' ')
             .map(Number);
     })
-    .map(getAllReportStatus)
+    .map(getReportStatus)
     .reduce((c, v) => c + Number(v), 0);
 
 console.log('Safe reports:', reports);
